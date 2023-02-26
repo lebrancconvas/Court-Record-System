@@ -3,8 +3,6 @@ Table cases {
   name varchar
   type varchar
   detail varchar
-  victim varchar
-  detective varchar
 }
 
 Table trials {
