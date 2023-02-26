@@ -1,0 +1,86 @@
+Table cases {
+  case_id bigserial [pk]
+  name varchar
+  type varchar
+  detail varchar
+  victim varchar
+  detective varchar
+}
+
+Table trials {
+  trial_id bigserial [pk]
+  fk_case_id bigint [ref: > cases.case_id]
+  detail varchar
+}
+
+Table trial_defendants {
+  trial_defendant_id bigserial [pk]
+  fk_trial_id bigint [ref: > trials.trial_id]
+  fk_profile_id bigint [ref: > profiles.profile_id]
+}
+
+Table trial_attornies {
+  trial_attorney_id bigserial [pk]
+  fk_trial_id bigint [ref: > trials.trial_id]
+  fk_profile_id bigint [ref: > profiles.profile_id]
+}
+
+Table trial_prosecutors {
+  trial_prosecutor_id bigserial [pk]
+  fk_trial_id bigint [ref: > trials.trial_id]
+  fk_profile_id bigint [ref: > profiles.profile_id]
+}
+
+Table trial_judges {
+  trial_judge_id bigserial [pk]
+  fk_trial_id bigint [ref: > trials.trial_id]
+  fk_profile_id bigint [ref: > profiles.profile_id]
+}
+
+Table case_detectives {
+  case_detective_id bigserial [pk]
+  fk_case_id bigint [ref: > cases.case_id]
+  fk_profile_id bigint [ref: > profiles.profile_id]
+}
+
+Table case_victims {
+  case_victim_id bigserial [pk]
+  fk_case_id bigint [ref: > cases.case_id]
+  fk_profile_id bigint [ref: > profiles.profile_id]
+}
+
+Table evidences {
+  evidence_id bigserial [pk]
+  name varchar
+  fk_evidence_type_id bigint [ref: > evidence_types.evidence_type_id]
+  source varchar
+  detail varchar
+  fk_case_id bigint [ref: > cases.case_id]
+}
+
+Table evidence_types {
+  evidence_type_id bigserial [pk]
+  type varchar
+  type_detail varchar
+}
+
+Table profiles {
+  profile_id bigserial [pk]
+  fk_profile_type bigint [ref: > profile_types.profile_type_id]
+  firstname varchar
+  surname varchar
+  detail varchar
+}
+
+Table profile_types {
+  profile_type_id bigserial [pk]
+  type varchar
+  type_detail varchar
+}
+
+Table testimonies {
+  testimony_id bigserial [pk]
+  fk_trial_id bigint [ref: > trials.trial_id]
+  fk_profile_id bigint [ref: > profiles.profile_id]
+  statement varchar
+}
