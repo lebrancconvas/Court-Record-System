@@ -67,6 +67,8 @@ Table profiles {
   fk_profile_type bigint [ref: > profile_types.profile_type_id]
   firstname varchar
   surname varchar
+  age int
+  gender varchar
   detail varchar
 }
 
