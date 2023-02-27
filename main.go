@@ -1,9 +1,7 @@
 package main
 
-import (
-
-)
+import model "lebrancconvas/courtrecord/models"
 
 func main() {
-	
+	model.CreateTrialTable()	
 }

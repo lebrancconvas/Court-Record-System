@@ -1,5 +1,19 @@
 package model
 
+import (
+	"lebrancconvas/courtrecord/db"
+	form "lebrancconvas/courtrecord/forms"
+	"log"
+)
+
+func CreateTrialTable() {
+	db := db.GetDB()
+	err := db.AutoMigrate(form.Trial{})
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
 func GetTrials() {
 
 }
